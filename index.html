@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TSEB Model Explorer</title>
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    header {
+      padding: 12px 18px;
+      background: #222;
+      color: white;
+    }
+
+    header h2 {
+      margin: 0 0 4px 0;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    #controls {
+      padding: 10px 18px;
+      background: white;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .control-group {
+      display: inline-block;
+      margin-right: 18px;
+      margin-bottom: 5px;
+    }
+
+    select {
+      padding: 5px;
+    }
+
+    #maps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5px;
+      padding: 5px;
+    }
+
+    .panel {
+      background: white;
+      border: 1px solid #ccc;
+    }
+
+    .panel-title {
+      text-align: center;
+      font-weight: bold;
+      padding: 7px;
+      background: #eee;
+    }
+
+    .map {
+      height: 68vh;
+    }
+
+    #histogramPanel {
+      margin: 5px;
+      padding: 15px 25px;
+      background: white;
+      border: 1px solid #ccc;
+    }
+
+    #histogramPanel h3 {
+      margin: 0 0 10px 0;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 320px;
+      width: 100%;
+    }
+
+    #tabs {
+      display: flex;
+      gap: 0;
+      padding: 0 18px;
+      background: #222;
+      border-top: 1px solid #444;
+    }
+
+    .tab-button {
+      padding: 10px 16px;
+      border: 0;
+      background: #222;
+      color: #bbb;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tab-button.active {
+      background: white;
+      color: #222;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    #closurePanel {
+      margin: 5px;
+      padding: 18px 25px;
+      background: white;
+      border: 1px solid #ccc;
+    }
+
+    .closure-note {
+      margin: 0 0 14px 0;
+      color: #555;
+      font-size: 13px;
+    }
+
+    .closure-chart-container {
+      position: relative;
+      height: 520px;
+      width: 100%;
+    }
+
+    #closureStats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(150px, 1fr));
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .closure-stat {
+      padding: 10px;
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    .closure-stat strong {
+      display: block;
+      font-size: 18px;
+      margin-top: 3px;
+    }
+
+    #colorbarPanel {
+      margin: 5px;
+      padding: 10px 18px 12px 18px;
+      background: white;
+      border: 1px solid #ccc;
+    }
+
+    #colorbarHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    #colorbarTitle {
+      font-weight: bold;
+    }
+
+    #colorbarUnit {
+      font-size: 13px;
+      color: #555;
+    }
+
+    #colorbarGradient {
+      height: 18px;
+      width: 100%;
+      border: 1px solid #888;
+      border-radius: 2px;
+    }
+
+    #colorbarTicks {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4px;
+      font-size: 12px;
+      color: #444;
+    }
+
+    #advectionPanel {
+      margin: 5px;
+      padding: 15px 25px;
+      background: white;
+      border: 1px solid #ccc;
+    }
+
+    #advectionPanel h3 {
+      margin: 0 0 6px 0;
+    }
+
+    #advectionSubtitle {
+      margin: 0 0 12px 0;
+      color: #555;
+      font-size: 13px;
+    }
+
+    #advectionSummary {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(130px, 1fr));
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .advection-card {
+      padding: 9px 10px;
+      background: #f4f4f4;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    .advection-card span {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 3px;
+    }
+
+    .advection-card strong {
+      font-size: 15px;
+    }
+
+    .advection-chart-container {
+      position: relative;
+      height: 350px;
+      width: 100%;
+    }
+
+    #advectionNoData {
+      display: none;
+      padding: 25px;
+      text-align: center;
+      color: #666;
+      background: #fafafa;
+      border: 1px dashed #ccc;
+    }
+
+    @media (max-width: 900px) {
+      #advectionSummary {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    #statsPanel {
+      margin: 5px;
+      padding: 15px 25px;
+      background: white;
+      border: 1px solid #ccc;
+    }
+
+    #statsPanel h3 {
+      margin: 0 0 10px 0;
+    }
+
+    #statsTable {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    #statsTable th,
+    #statsTable td {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    #statsTable th {
+      background: #eee;
+    }
+
+    #statsTable td:first-child {
+      font-weight: bold;
+    }
+
+    @media (max-width: 900px) {
+      #maps {
+        grid-template-columns: 1fr;
+      }
+
+      .map {
+        height: 500px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h2>TSEB Model Explorer</h2>
+  <p id="flightLabel">Loading...</p>
+</header>
+
+<div id="tabs">
+  <button id="explorerTabButton" class="tab-button active">TSEB Explorer</button>
+  <button id="closureTabButton" class="tab-button">TSEB–EC Validation</button>
+</div>
+
+<div id="explorerTab" class="tab-content active">
+
+<div id="controls">
+
+  <div class="control-group">
+    <strong>Site:</strong>
+    <select id="siteSelect"></select>
+  </div>
+
+  <div class="control-group">
+    <strong>Date:</strong>
+    <select id="dateSelect"></select>
+  </div>
+
+  <div class="control-group">
+    <strong>Time:</strong>
+    <select id="timeSelect"></select>
+  </div>
+
+  <div class="control-group">
+    <strong>Variable:</strong>
+
+    <select id="variableSelect">
+      <option value="Rn">Net Radiation (Rn)</option>
+      <option value="H">Sensible Heat Flux (H)</option>
+      <option value="LE" selected>Latent Heat Flux (LE)</option>
+      <option value="G">Soil Heat Flux (G)</option>
+    </select>
+  </div>
+
+  <span id="units">W m⁻²</span>
+
+</div>
+
+
+<div id="colorbarPanel">
+  <div id="colorbarHeader">
+    <span id="colorbarTitle">Latent Heat Flux (LE)</span>
+    <span id="colorbarUnit">W m⁻²</span>
+  </div>
+
+  <div id="colorbarGradient"></div>
+
+  <div id="colorbarTicks">
+    <span id="colorbarMin">-200</span>
+    <span id="colorbarMid">450</span>
+    <span id="colorbarMax">1100</span>
+  </div>
+</div>
+
+
+<div id="maps">
+
+  <div class="panel">
+    <div class="panel-title">TSEB-PT</div>
+    <div id="mapPT" class="map"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">TSEB-PM</div>
+    <div id="mapPM" class="map"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-title">TSEB-SW</div>
+    <div id="mapSW" class="map"></div>
+  </div>
+
+</div>
+
+
+<div id="histogramPanel">
+
+  <h3>Pixel Distribution</h3>
+
+  <div class="chart-container">
+    <canvas id="histogramChart"></canvas>
+  </div>
+
+</div>
+
+
+<div id="statsPanel">
+  <h3>Summary Statistics</h3>
+
+  <table id="statsTable">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Mean</th>
+        <th>Median</th>
+        <th>SD</th>
+        <th>P01</th>
+        <th>P99</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>TSEB-PT</td>
+        <td id="ptMean">-</td>
+        <td id="ptMedian">-</td>
+        <td id="ptStd">-</td>
+        <td id="ptP01">-</td>
+        <td id="ptP99">-</td>
+      </tr>
+
+      <tr>
+        <td>TSEB-PM</td>
+        <td id="pmMean">-</td>
+        <td id="pmMedian">-</td>
+        <td id="pmStd">-</td>
+        <td id="pmP01">-</td>
+        <td id="pmP99">-</td>
+      </tr>
+
+      <tr>
+        <td>TSEB-SW</td>
+        <td id="swMean">-</td>
+        <td id="swMedian">-</td>
+        <td id="swStd">-</td>
+        <td id="swP01">-</td>
+        <td id="swP99">-</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="advectionPanel">
+  <h3>Daily Advection Context</h3>
+  <p id="advectionSubtitle">Atmospheric and energy-balance evolution by site and date.</p>
+
+  <div id="advectionSummary">
+    <div class="advection-card">
+      <span>Daily signal</span>
+      <strong id="advDailyStatus">-</strong>
+    </div>
+    <div class="advection-card">
+      <span>Strong-signal period</span>
+      <strong id="advPeriod">-</strong>
+    </div>
+    <div class="advection-card">
+      <span>Strong observations</span>
+      <strong id="advStrongCount">-</strong>
+    </div>
+    <div class="advection-card">
+      <span>Mean daytime H</span>
+      <strong id="advMeanH">-</strong>
+    </div>
+    <div class="advection-card">
+      <span>Mean daytime LE / (Rn-G)</span>
+      <strong id="advMeanLEAE">-</strong>
+    </div>
+  </div>
+
+  <div id="advectionNoData">
+    Advection data are not available for this site and date.
+  </div>
+
+  <div id="advectionChartWrap" class="advection-chart-container">
+    <canvas id="advectionChart"></canvas>
+  </div>
+</div>
+
+</div>
+
+<div id="closureTab" class="tab-content">
+  <div id="closurePanel">
+    <h2>TSEB–EC Energy Flux Validation</h2>
+    <p class="closure-note">
+      Validation of the four energy-balance components using the observations available in the current validation dataset.
+      The x-axis shows TSEB-modeled values and the y-axis shows the corresponding tower values
+      after energy-balance closure correction. Colors distinguish Rn, H, LE, and G.
+      Hover over any point to identify site, date, time, component, model value, and tower value.
+    </p>
+
+    <div id="closureStats">
+      <div class="closure-stat">
+        Model
+        <strong>
+          <select id="closureModelSelect">
+            <option value="PT">TSEB-PT</option>
+            <option value="PM">TSEB-PM</option>
+            <option value="SW">TSEB-SW</option>
+          </select>
+        </strong>
+      </div>
+      <div class="closure-stat">Flights<strong id="closureN">-</strong></div>
+      <div class="closure-stat">X axis<strong>Modeled TSEB</strong></div>
+      <div class="closure-stat">Y axis<strong>Corrected Tower</strong></div>
+    </div>
+
+    <div class="closure-chart-container">
+      <canvas id="closureChart"></canvas>
+    </div>
+
+    <div id="validationMetrics" style="margin-top: 16px;">
+      <h3 style="margin: 0 0 8px 0;">Validation Statistics by Component</h3>
+
+      <table id="validationMetricsTable" style="
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+      ">
+        <thead>
+          <tr>
+            <th style="padding:8px;border:1px solid #ddd;background:#eee;">Component</th>
+            <th style="padding:8px;border:1px solid #ddd;background:#eee;">N</th>
+            <th style="padding:8px;border:1px solid #ddd;background:#eee;">RMSE</th>
+            <th style="padding:8px;border:1px solid #ddd;background:#eee;">MAE</th>
+            <th style="padding:8px;border:1px solid #ddd;background:#eee;">Bias</th>
+            <th style="padding:8px;border:1px solid #ddd;background:#eee;">R²</th>
+            <th style="padding:8px;border:1px solid #ddd;background:#eee;">r</th>
+          </tr>
+        </thead>
+        <tbody id="validationMetricsBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+
+// ==================================================
+// Global variables
+// ==================================================
+
+let masterIndex = null;
+
+let currentBounds = null;
+let currentMetadata = null;
+let currentHistograms = null;
+let currentFlightEntry = null;
+
+let overlayPT = null;
+let overlayPM = null;
+let overlaySW = null;
+
+let histogramChart = null;
+
+let syncing = false;
+let closureChart = null;
+let advectionChart = null;
+let advectionData = null;
+
+
+// ==================================================
+// Create maps
+// ==================================================
+
+function createMap(id) {
+
+  const map = L.map(id);
+
+  L.tileLayer(
+    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {
+      maxZoom: 20,
+      attribution: "&copy; OpenStreetMap contributors"
+    }
+  ).addTo(map);
+
+  return map;
+}
+
+
+const mapPT = createMap("mapPT");
+const mapPM = createMap("mapPM");
+const mapSW = createMap("mapSW");
+
+const maps = [mapPT, mapPM, mapSW];
+
+
+// ==================================================
+// Synchronize maps
+// ==================================================
+
+function synchronize(sourceMap) {
+
+  if (syncing) return;
+
+  syncing = true;
+
+  const center = sourceMap.getCenter();
+  const zoom = sourceMap.getZoom();
+
+  maps.forEach(map => {
+
+    if (map !== sourceMap) {
+
+      map.setView(
+        center,
+        zoom,
+        {animate: false}
+      );
+
+    }
+
+  });
+
+  syncing = false;
+}
+
+
+maps.forEach(map => {
+
+  map.on("move", function() {
+    synchronize(map);
+  });
+
+});
+
+
+// ==================================================
+// Helpers
+// ==================================================
+
+function formatDate(dateString) {
+
+  return (
+    dateString.slice(0, 4) +
+    "-" +
+    dateString.slice(4, 6) +
+    "-" +
+    dateString.slice(6, 8)
+  );
+}
+
+
+function formatTime(timeString) {
+
+  return (
+    timeString.slice(0, 2) +
+    ":" +
+    timeString.slice(2, 4)
+  );
+}
+
+
+function getSelection() {
+
+  return {
+
+    site:
+      document.getElementById("siteSelect").value,
+
+    date:
+      document.getElementById("dateSelect").value,
+
+    time:
+      document.getElementById("timeSelect").value,
+
+    variable:
+      document.getElementById("variableSelect").value
+
+  };
+}
+
+
+// ==================================================
+// Dynamic common colorbar
+// Scientific display limits and units come from index.json.
+// Only the CSS gradients remain here because they are presentation,
+// not scientific data.
+// ==================================================
+
+const COLORBAR_GRADIENTS = {
+  viridis:
+    "linear-gradient(to right, #440154 0%, #482878 14%, #3e4989 28%, #31688e 42%, #26828e 56%, #1f9e89 70%, #6cce5a 85%, #fde725 100%)",
+
+  coolwarm:
+    "linear-gradient(to right, #3b4cc0 0%, #6788ee 18%, #9abbff 34%, #d4dbe6 48%, #f2cbb7 58%, #e7866a 76%, #b40426 100%)",
+
+  turbo:
+    "linear-gradient(to right, #30123b 0%, #4145ab 12%, #4675ed 24%, #39a2fc 36%, #1bcfd4 48%, #24eca6 58%, #61fc6c 66%, #a4fc3c 74%, #d1e834 82%, #f3b61f 90%, #f66b19 96%, #7a0403 100%)"
+};
+
+
+function variableLabel(variable) {
+
+  const labels = {
+    Rn: "Net Radiation (Rn)",
+    H: "Sensible Heat Flux (H)",
+    LE: "Latent Heat Flux (LE)",
+    G: "Soil Heat Flux (G)"
+  };
+
+  return labels[variable] ?? variable;
+}
+
+
+function updateColorbar() {
+
+  const variable =
+    document.getElementById("variableSelect").value;
+
+  const config =
+    masterIndex?.variables?.[variable];
+
+  if (!config) return;
+
+  const min = Number(config.display_min);
+  const max = Number(config.display_max);
+  const midpoint = (min + max) / 2;
+
+  document.getElementById("colorbarTitle").textContent =
+    variableLabel(variable);
+
+  document.getElementById("colorbarUnit").textContent =
+    config.units ?? "";
+
+  document.getElementById("units").textContent =
+    config.units ?? "";
+
+  document.getElementById("colorbarGradient").style.background =
+    COLORBAR_GRADIENTS[config.colormap] ?? "";
+
+  document.getElementById("colorbarMin").textContent =
+    Number.isFinite(min) ? min : "-";
+
+  document.getElementById("colorbarMid").textContent =
+    Number.isFinite(midpoint)
+      ? (Number.isInteger(midpoint) ? midpoint : midpoint.toFixed(1))
+      : "-";
+
+  document.getElementById("colorbarMax").textContent =
+    Number.isFinite(max) ? max : "-";
+}
+
+
+// ==================================================
+// Populate selectors
+// ==================================================
+
+function populateSites() {
+
+  const siteSelect =
+    document.getElementById("siteSelect");
+
+  siteSelect.innerHTML = "";
+
+  const sites =
+    Object.keys(masterIndex.sites);
+
+  sites.forEach(site => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = site;
+    option.textContent = site;
+
+    siteSelect.appendChild(option);
+
+  });
+
+}
+
+
+function populateDates() {
+
+  const site =
+    document.getElementById("siteSelect").value;
+
+  const dateSelect =
+    document.getElementById("dateSelect");
+
+  dateSelect.innerHTML = "";
+
+  const dates =
+    Object.keys(masterIndex.sites[site]).sort();
+
+  dates.forEach(date => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = date;
+    option.textContent = formatDate(date);
+
+    dateSelect.appendChild(option);
+
+  });
+
+}
+
+
+function populateTimes() {
+
+  const site =
+    document.getElementById("siteSelect").value;
+
+  const date =
+    document.getElementById("dateSelect").value;
+
+  const timeSelect =
+    document.getElementById("timeSelect");
+
+  timeSelect.innerHTML = "";
+
+  const flights =
+    masterIndex.sites?.[site]?.[date] ?? [];
+
+  flights.forEach(flight => {
+
+    const option =
+      document.createElement("option");
+
+    option.value = flight.time;
+    option.dataset.flightId = flight.flight_id;
+    option.textContent = formatTime(flight.time);
+
+    timeSelect.appendChild(option);
+  });
+}
+
+
+// ==================================================
+// Summary statistics
+// ==================================================
+
+function formatStat(value) {
+  return Number.isFinite(value) ? value.toFixed(1) : "-";
+}
+
+
+function updateStatistics(metadata) {
+
+  const variable =
+    document.getElementById("variableSelect").value;
+
+  const models = {
+    PT: "pt",
+    PM: "pm",
+    SW: "sw"
+  };
+
+  Object.entries(models).forEach(([model, prefix]) => {
+
+    const stats =
+      metadata.models?.[model]?.variables?.[variable]?.stats;
+
+    const values = {
+      Mean: stats?.mean,
+      Median: stats?.median,
+      Std: stats?.std,
+      P01: stats?.p01,
+      P99: stats?.p99
+    };
+
+    Object.entries(values).forEach(([suffix, value]) => {
+      document.getElementById(`${prefix}${suffix}`).textContent =
+        formatStat(value);
+    });
+  });
+}
+
+
+// ==================================================
+// Load flight
+// ==================================================
+
+async function loadFlight() {
+
+  const selection = getSelection();
+
+  const flights =
+    masterIndex.sites?.[selection.site]?.[selection.date] ?? [];
+
+  currentFlightEntry =
+    flights.find(f => f.time === selection.time);
+
+  if (!currentFlightEntry) {
+    console.error("Flight not found in index:", selection);
+    return;
+  }
+
+  const globalFlight =
+    masterIndex.flights.find(
+      f => f.flight_id === currentFlightEntry.flight_id
+    );
+
+  if (!globalFlight) {
+    console.error("Flight metadata entry not found:", currentFlightEntry.flight_id);
+    return;
+  }
+
+  const [metadataResponse, histogramResponse] =
+    await Promise.all([
+      fetch(globalFlight.metadata),
+      fetch(globalFlight.histograms)
+    ]);
+
+  if (!metadataResponse.ok) {
+    throw new Error(`Could not load ${globalFlight.metadata}`);
+  }
+
+  if (!histogramResponse.ok) {
+    throw new Error(`Could not load ${globalFlight.histograms}`);
+  }
+
+  currentMetadata =
+    await metadataResponse.json();
+
+  currentHistograms =
+    await histogramResponse.json();
+
+  currentBounds =
+    currentMetadata.bounds;
+
+  updateStatistics(currentMetadata);
+
+  document
+    .getElementById("flightLabel")
+    .textContent =
+      `${selection.site} — ` +
+      `${formatDate(selection.date)} — ` +
+      `${formatTime(selection.time)}`;
+
+  updateRasters();
+
+  maps.forEach(map => {
+    map.fitBounds(
+      currentBounds,
+      {animate: false}
+    );
+  });
+
+  updateHistogram();
+  await updateAdvectionContext();
+}
+
+
+// ==================================================
+// Raster overlays
+// ==================================================
+
+function updateRasters() {
+
+  const selection = getSelection();
+
+  if (!currentBounds || !currentMetadata) return;
+
+  if (overlayPT) mapPT.removeLayer(overlayPT);
+  if (overlayPM) mapPM.removeLayer(overlayPM);
+  if (overlaySW) mapSW.removeLayer(overlaySW);
+
+  const imagePT =
+    currentMetadata.models?.PT?.variables?.[selection.variable]?.image;
+
+  const imagePM =
+    currentMetadata.models?.PM?.variables?.[selection.variable]?.image;
+
+  const imageSW =
+    currentMetadata.models?.SW?.variables?.[selection.variable]?.image;
+
+  if (imagePT) {
+    overlayPT = L.imageOverlay(
+      imagePT,
+      currentBounds,
+      {opacity: 0.85}
+    ).addTo(mapPT);
+  }
+
+  if (imagePM) {
+    overlayPM = L.imageOverlay(
+      imagePM,
+      currentBounds,
+      {opacity: 0.85}
+    ).addTo(mapPM);
+  }
+
+  if (imageSW) {
+    overlaySW = L.imageOverlay(
+      imageSW,
+      currentBounds,
+      {opacity: 0.85}
+    ).addTo(mapSW);
+  }
+}
+
+
+// ==================================================
+// Histogram
+// ==================================================
+
+function updateHistogram() {
+
+  const selection = getSelection();
+
+  if (!currentHistograms) return;
+
+  const modelData = {
+    PT: currentHistograms.models?.PT?.[selection.variable],
+    PM: currentHistograms.models?.PM?.[selection.variable],
+    SW: currentHistograms.models?.SW?.[selection.variable]
+  };
+
+  const reference =
+    modelData.PT ?? modelData.PM ?? modelData.SW;
+
+  if (!reference) return;
+
+  const labels =
+    reference.bin_centers ?? [];
+
+  const canvas =
+    document.getElementById("histogramChart");
+
+  if (histogramChart) {
+    histogramChart.destroy();
+  }
+
+  histogramChart = new Chart(
+    canvas,
+    {
+      type: "line",
+
+      data: {
+        datasets: [
+          {
+            label: "TSEB-PT",
+            data: (modelData.PT?.bin_centers ?? []).map(
+              (x, i) => ({x: Number(x), y: modelData.PT.counts[i]})
+            ),
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHoverRadius: 4,
+            tension: 0.15
+          },
+          {
+            label: "TSEB-PM",
+            data: (modelData.PM?.bin_centers ?? []).map(
+              (x, i) => ({x: Number(x), y: modelData.PM.counts[i]})
+            ),
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHoverRadius: 4,
+            tension: 0.15
+          },
+          {
+            label: "TSEB-SW",
+            data: (modelData.SW?.bin_centers ?? []).map(
+              (x, i) => ({x: Number(x), y: modelData.SW.counts[i]})
+            ),
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHoverRadius: 4,
+            tension: 0.15
+          }
+        ]
+      },
+
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+
+        interaction: {
+          mode: "index",
+          intersect: false
+        },
+
+        plugins: {
+          legend: {
+            position: "top"
+          },
+
+          tooltip: {
+            callbacks: {
+              title: function(items) {
+                if (!items.length) return "";
+                const value = Number(items[0].parsed.x);
+                const unit =
+                  masterIndex?.variables?.[selection.variable]?.units ?? "";
+                return `${selection.variable}: ${Number.isFinite(value) ? value.toFixed(1) : items[0].label} ${unit}`;
+              },
+
+              label: function(context) {
+                return `${context.dataset.label}: ${context.parsed.y} pixels`;
+              }
+            }
+          }
+        },
+
+        scales: {
+          x: {
+            type: "linear",
+            ticks: {
+              stepSize: 50,
+              callback: function(value) {
+                return Number(value).toFixed(0);
+              }
+            },
+            title: {
+              display: true,
+              text:
+                `${selection.variable} (` +
+                `${masterIndex?.variables?.[selection.variable]?.units ?? ""})`
+            },
+          },
+
+          y: {
+            title: {
+              display: true,
+              text: "Pixel count"
+            },
+
+            beginAtZero: true
+          }
+        }
+      }
+    }
+  );
+}
+
+
+// ==================================================
+// Event listeners
+// ==================================================
+
+document
+  .getElementById("siteSelect")
+  .addEventListener(
+    "change",
+    async function() {
+
+      populateDates();
+      populateTimes();
+
+      await loadFlight();
+
+    }
+  );
+
+
+document
+  .getElementById("dateSelect")
+  .addEventListener(
+    "change",
+    async function() {
+
+      populateTimes();
+
+      await loadFlight();
+
+    }
+  );
+
+
+document
+  .getElementById("timeSelect")
+  .addEventListener(
+    "change",
+    loadFlight
+  );
+
+
+document
+  .getElementById("variableSelect")
+  .addEventListener(
+    "change",
+    async function() {
+
+      updateRasters();
+
+      await updateHistogram();
+
+      updateColorbar();
+
+      if (currentMetadata) {
+        updateStatistics(currentMetadata);
+      }
+
+    }
+  );
+
+
+
+
+// ==================================================
+// Daily advection context (SITE + DATE)
+// ==================================================
+
+async function ensureAdvectionData() {
+
+  if (advectionData) return;
+
+  const response =
+    await fetch("data/advection_data.json");
+
+  advectionData =
+    await response.json();
+}
+
+
+function formatAdvValue(value, digits = 1) {
+
+  if (value === null || value === undefined || !Number.isFinite(Number(value))) {
+    return "-";
+  }
+
+  return Number(value).toFixed(digits);
+}
+
+
+async function updateAdvectionContext() {
+
+  await ensureAdvectionData();
+
+  const selection = getSelection();
+
+  const day =
+    advectionData.sites?.[selection.site]?.[formatDate(selection.date)];
+
+  const noData =
+    document.getElementById("advectionNoData");
+
+  const chartWrap =
+    document.getElementById("advectionChartWrap");
+
+  if (!day) {
+
+    noData.style.display = "block";
+    chartWrap.style.display = "none";
+
+    document.getElementById("advectionSubtitle").textContent =
+      `${selection.site} — ${formatDate(selection.date)} — no daily advection dataset`;
+
+    document.getElementById("advDailyStatus").textContent = "Not available";
+    document.getElementById("advPeriod").textContent = "-";
+    document.getElementById("advStrongCount").textContent = "-";
+    document.getElementById("advMeanH").textContent = "-";
+    document.getElementById("advMeanLEAE").textContent = "-";
+
+    if (advectionChart) {
+      advectionChart.destroy();
+      advectionChart = null;
+    }
+
+    return;
+  }
+
+  noData.style.display = "none";
+  chartWrap.style.display = "block";
+
+  const summary = day.summary;
+
+  document.getElementById("advectionSubtitle").textContent =
+    `${selection.site} — ${formatDate(selection.date)} — daily tower context (independent of UAV flight time)`;
+
+  // Display daytime observations only.
+  // The complete 24-h series remains preserved in advection_data.json.
+  const rows = day.timeseries.filter(r => r.DAYTIME === true);
+
+  const statusLabels = {
+    "STRONG_SIGNAL_PRESENT": "Strong signal present",
+    "MODERATE_SIGNAL_PRESENT": "Moderate signal present",
+    "NO_STRONG_SIGNAL_DETECTED": "No strong signal detected",
+    "NO_SIGNAL_DETECTED": "No signal detected"
+  };
+
+  document.getElementById("advDailyStatus").textContent =
+    statusLabels[summary.DAILY_STATUS] ?? summary.DAILY_STATUS ?? "Unknown";
+
+  document.getElementById("advPeriod").textContent =
+    summary.ADV_START && summary.ADV_END
+      ? `${summary.ADV_START}–${summary.ADV_END}`
+      : "No strong-signal period";
+
+  document.getElementById("advStrongCount").textContent =
+    summary.N_STRONG_SIGNAL ?? "-";
+
+  // MEAN_DAY_H is not stored in the summary. Calculate it from DAYTIME=true rows.
+  const daytimeH = rows
+    .map(r => Number(r.H))
+    .filter(v => Number.isFinite(v));
+
+  const meanDayH = daytimeH.length
+    ? daytimeH.reduce((a, b) => a + b, 0) / daytimeH.length
+    : null;
+
+  document.getElementById("advMeanH").textContent =
+    `${formatAdvValue(meanDayH)} W m⁻²`;
+
+  // Current JSON field name.
+  document.getElementById("advMeanLEAE").textContent =
+    formatAdvValue(summary.MEAN_LE_AE, 2);
+
+  const labels = rows.map(r => r.time);
+
+  const hData = rows.map(r => r.H);
+  const leData = rows.map(r => r.LE);
+  const aeData = rows.map(r => r.AVAILABLE_ENERGY);
+
+  // Zero-reference line across the day
+  const zeroData = rows.map(() => 0);
+
+  if (advectionChart) {
+    advectionChart.destroy();
+  }
+
+  advectionChart = new Chart(
+    document.getElementById("advectionChart"),
+    {
+      type: "line",
+
+      data: {
+        labels: labels,
+
+        datasets: [
+          {
+            label: "H",
+            data: hData,
+            borderWidth: 2,
+            pointRadius: 3,
+            tension: 0.15
+          },
+          {
+            label: "LE",
+            data: leData,
+            borderWidth: 2,
+            pointRadius: 3,
+            tension: 0.15
+          },
+          {
+            label: "Available Energy (Rn - G)",
+            data: aeData,
+            borderWidth: 2,
+            pointRadius: 3,
+            tension: 0.15
+          },
+          {
+            label: "Zero",
+            data: zeroData,
+            borderWidth: 1,
+            pointRadius: 0,
+            borderDash: [6, 4]
+          }
+        ]
+      },
+
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+
+        interaction: {
+          mode: "index",
+          intersect: false
+        },
+
+        plugins: {
+          legend: {
+            position: "top"
+          },
+
+          tooltip: {
+            callbacks: {
+              afterBody: function(items) {
+
+                if (!items.length) return [];
+
+                const idx = items[0].dataIndex;
+                const p = rows[idx];
+
+                const details = [
+                  `Signal: ${p.ADVECTION_SIGNAL ?? "-"}`,
+                  `Advection score: ${p.ADV_SCORE ?? "-"}`,
+                  `LE / (Rn-G): ${formatAdvValue(p.LE_AE, 2)}`,
+                  `VPD: ${formatAdvValue(p.VPD, 1)}`,
+                  `WS: ${formatAdvValue(p.WS, 2)} m s⁻¹`,
+                  `WD: ${formatAdvValue(p.WD, 0)}°`,
+                  `u*: ${formatAdvValue(p.USTAR, 2)} m s⁻¹`,
+                  `L: ${formatAdvValue(p.MO_LENGTH, 1)} m`
+                ];
+
+                return details;
+              }
+            }
+          }
+        },
+
+        scales: {
+          x: {
+            title: {
+              display: true,
+              text: "Local time"
+            },
+            ticks: {
+              maxTicksLimit: 13
+            }
+          },
+
+          y: {
+            title: {
+              display: true,
+              text: "Energy flux (W m⁻²)"
+            }
+          }
+        }
+      }
+    }
+  );
+}
+
+
+// ==================================================
+// Tabs and EC validation
+// ==================================================
+
+function showTab(tabName) {
+
+  const explorerActive = tabName === "explorer";
+
+  document.getElementById("explorerTab").classList.toggle("active", explorerActive);
+  document.getElementById("closureTab").classList.toggle("active", !explorerActive);
+
+  document.getElementById("explorerTabButton").classList.toggle("active", explorerActive);
+  document.getElementById("closureTabButton").classList.toggle("active", !explorerActive);
+
+  if (explorerActive) {
+    setTimeout(() => {
+      maps.forEach(map => map.invalidateSize());
+    }, 50);
+  } else {
+    loadClosurePlot();
+  }
+}
+
+
+document.getElementById("explorerTabButton").addEventListener("click", () => {
+  showTab("explorer");
+});
+
+
+document.getElementById("closureTabButton").addEventListener("click", () => {
+  showTab("closure");
+});
+
+
+let closureData = null;
+
+
+async function loadClosurePlot() {
+
+  if (!closureData) {
+    const response = await fetch("data/closure_data_components.json");
+    closureData = await response.json();
+
+    document.getElementById("closureModelSelect").addEventListener("change", drawClosurePlot);
+  }
+
+  drawClosurePlot();
+}
+
+
+
+function calculateValidationMetrics(points) {
+
+  const valid = points.filter(p =>
+    Number.isFinite(Number(p.modeled)) &&
+    Number.isFinite(Number(p.tower_corrected))
+  );
+
+  const n = valid.length;
+
+  if (n === 0) {
+    return {
+      n: 0,
+      rmse: null,
+      mae: null,
+      bias: null,
+      r2: null,
+      r: null
+    };
+  }
+
+  const x = valid.map(p => Number(p.modeled));
+  const y = valid.map(p => Number(p.tower_corrected));
+
+  const errors = x.map((v, i) => v - y[i]);
+
+  const rmse =
+    Math.sqrt(
+      errors.reduce((s, e) => s + e * e, 0) / n
+    );
+
+  const mae =
+    errors.reduce((s, e) => s + Math.abs(e), 0) / n;
+
+  const bias =
+    errors.reduce((s, e) => s + e, 0) / n;
+
+  const meanX =
+    x.reduce((s, v) => s + v, 0) / n;
+
+  const meanY =
+    y.reduce((s, v) => s + v, 0) / n;
+
+  let num = 0;
+  let denX = 0;
+  let denY = 0;
+
+  for (let i = 0; i < n; i++) {
+    const dx = x[i] - meanX;
+    const dy = y[i] - meanY;
+
+    num += dx * dy;
+    denX += dx * dx;
+    denY += dy * dy;
+  }
+
+  const r =
+    denX > 0 && denY > 0
+      ? num / Math.sqrt(denX * denY)
+      : null;
+
+  const r2 =
+    r === null ? null : r * r;
+
+  return {
+    n,
+    rmse,
+    mae,
+    bias,
+    r2,
+    r
+  };
+}
+
+
+function updateValidationMetrics(points) {
+
+  const components = ["Rn", "H", "LE", "G"];
+  const tbody =
+    document.getElementById("validationMetricsBody");
+
+  tbody.innerHTML = "";
+
+  components.forEach(component => {
+
+    const componentPoints =
+      points.filter(
+        p => p.component === component
+      );
+
+    const m =
+      calculateValidationMetrics(componentPoints);
+
+    const row =
+      document.createElement("tr");
+
+    const values = [
+      component,
+      m.n,
+      Number.isFinite(m.rmse) ? m.rmse.toFixed(1) : "-",
+      Number.isFinite(m.mae) ? m.mae.toFixed(1) : "-",
+      Number.isFinite(m.bias) ? m.bias.toFixed(1) : "-",
+      Number.isFinite(m.r2) ? m.r2.toFixed(3) : "-",
+      Number.isFinite(m.r) ? m.r.toFixed(3) : "-"
+    ];
+
+    values.forEach((value, i) => {
+
+      const cell =
+        document.createElement("td");
+
+      cell.textContent = value;
+      cell.style.padding = "8px";
+      cell.style.border = "1px solid #ddd";
+
+      if (i === 0) {
+        cell.style.fontWeight = "bold";
+      }
+
+      row.appendChild(cell);
+    });
+
+    tbody.appendChild(row);
+  });
+}
+
+
+function drawClosurePlot() {
+
+  const model =
+    document.getElementById("closureModelSelect").value;
+
+  const modelFlights =
+    new Set(
+      closureData.points
+        .filter(p => p.model === model)
+        .map(p => `${p.site}_${p.date}_${p.time}`)
+    );
+
+  document.getElementById("closureN").textContent =
+    modelFlights.size;
+
+  const modelPoints =
+    closureData.points.filter(
+      p => p.model === model &&
+           Number.isFinite(Number(p.modeled)) &&
+           Number.isFinite(Number(p.tower_corrected))
+    );
+
+  updateValidationMetrics(modelPoints);
+
+  const axisValues =
+    modelPoints.flatMap(
+      p => [Number(p.modeled), Number(p.tower_corrected)]
+    );
+
+  const rawMin =
+    axisValues.length ? Math.min(...axisValues) : 0;
+
+  const rawMax =
+    axisValues.length ? Math.max(...axisValues) : 1;
+
+  const padding =
+    Math.max((rawMax - rawMin) * 0.05, 25);
+
+  const axisMin =
+    Math.floor((rawMin - padding) / 50) * 50;
+
+  const axisMax =
+    Math.ceil((rawMax + padding) / 50) * 50;
+
+  const componentLabels = {
+    Rn: "Rn",
+    H: "H",
+    LE: "LE",
+    G: "G"
+  };
+
+  // Explicit component colors for scientific consistency
+  const componentColors = {
+    Rn: "#6a3d9a",
+    H: "#e31a1c",
+    LE: "#1f78b4",
+    G: "#33a02c"
+  };
+
+  const datasets = ["Rn", "H", "LE", "G"].map(component => {
+
+    const data = modelPoints
+      .filter(p => p.component === component)
+      .map(p => ({
+        x: p.modeled,
+        y: p.tower_corrected,
+        meta: p
+      }));
+
+    return {
+      label: componentLabels[component],
+      data: data,
+      pointRadius: 6,
+      pointHoverRadius: 9,
+      backgroundColor: componentColors[component],
+      borderColor: componentColors[component]
+    };
+  });
+
+  datasets.push({
+    label: "1:1",
+    data: [
+      {x: axisMin, y: axisMin},
+      {x: axisMax, y: axisMax}
+    ],
+    type: "line",
+    borderColor: "#555",
+    borderWidth: 2,
+    pointRadius: 0,
+    borderDash: [7, 5]
+  });
+
+  if (closureChart) {
+    closureChart.destroy();
+  }
+
+  closureChart = new Chart(
+    document.getElementById("closureChart"),
+    {
+      type: "scatter",
+
+      data: {
+        datasets: datasets
+      },
+
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+
+        interaction: {
+          mode: "nearest",
+          intersect: true
+        },
+
+        plugins: {
+          legend: {
+            position: "top"
+          },
+
+          tooltip: {
+            callbacks: {
+
+              title: function(items) {
+                if (!items.length || !items[0].raw.meta) return "";
+                const p = items[0].raw.meta;
+                return `${p.site} — ${p.date} — ${p.time}`;
+              },
+
+              label: function(context) {
+
+                const p = context.raw.meta;
+
+                if (!p) {
+                  return context.dataset.label;
+                }
+
+                const extra = [];
+
+                extra.push(`Component: ${p.component}`);
+                extra.push(`TSEB-${p.model}: ${p.modeled.toFixed(1)} W m⁻²`);
+                extra.push(`Tower corrected: ${p.tower_corrected.toFixed(1)} W m⁻²`);
+
+                if (p.EBR !== null) {
+                  extra.push(`Tower EBR: ${p.EBR.toFixed(3)}`);
+                }
+
+                if (p.closure_error !== null) {
+                  extra.push(`Closure error: ${p.closure_error.toFixed(3)}`);
+                }
+
+                return extra;
+              }
+            }
+          }
+        },
+
+        scales: {
+
+          x: {
+            type: "linear",
+            min: axisMin,
+            max: axisMax,
+            title: {
+              display: true,
+              text: `Modeled energy flux — TSEB-${model} (W m⁻²)`
+            }
+          },
+
+          y: {
+            type: "linear",
+            min: axisMin,
+            max: axisMax,
+            title: {
+              display: true,
+              text: "Corrected tower energy flux (W m⁻²)"
+            }
+          }
+        }
+      }
+    }
+  );
+}
+
+
+// ==================================================
+// Initialize application
+// ==================================================
+
+async function initialize() {
+
+  const response =
+    await fetch(
+      "data/index.json"
+    );
+
+
+  if (!response.ok) {
+    throw new Error("Could not load data/index.json");
+  }
+
+  masterIndex =
+    await response.json();
+
+
+  populateSites();
+
+  populateDates();
+
+  populateTimes();
+
+  updateColorbar();
+
+  await loadFlight();
+
+}
+
+
+initialize();
+
+</script>
+
+</body>
+</html>

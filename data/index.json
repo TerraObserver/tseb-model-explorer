@@ -1,0 +1,602 @@
+{
+  "version": 1,
+  "variables": {
+    "Rn": {
+      "units": "W m-2",
+      "display_min": 0.0,
+      "display_max": 850.0,
+      "colormap": "viridis"
+    },
+    "H": {
+      "units": "W m-2",
+      "display_min": -500.0,
+      "display_max": 550.0,
+      "colormap": "coolwarm"
+    },
+    "LE": {
+      "units": "W m-2",
+      "display_min": -200.0,
+      "display_max": 1100.0,
+      "colormap": "turbo"
+    },
+    "G": {
+      "units": "W m-2",
+      "display_min": -100.0,
+      "display_max": 250.0,
+      "colormap": "coolwarm"
+    }
+  },
+  "models": [
+    "PT",
+    "PM",
+    "SW"
+  ],
+  "qa_qc_ranges": {
+    "Rn": {
+      "min": -200.0,
+      "max": 1200.0
+    },
+    "H": {
+      "min": -700.0,
+      "max": 1000.0
+    },
+    "LE": {
+      "min": -300.0,
+      "max": 1500.0
+    },
+    "G": {
+      "min": -300.0,
+      "max": 600.0
+    }
+  },
+  "sites": {
+    "OLA": {
+      "20210729": [
+        {
+          "time": "1500",
+          "flight_id": "OLA_20210729_1500"
+        }
+      ],
+      "20210805": [
+        {
+          "time": "1100",
+          "flight_id": "OLA_20210805_1100"
+        },
+        {
+          "time": "1300",
+          "flight_id": "OLA_20210805_1300"
+        },
+        {
+          "time": "1500",
+          "flight_id": "OLA_20210805_1500"
+        }
+      ],
+      "20230609": [
+        {
+          "time": "1500",
+          "flight_id": "OLA_20230609_1500"
+        }
+      ],
+      "20240619": [
+        {
+          "time": "1100",
+          "flight_id": "OLA_20240619_1100"
+        },
+        {
+          "time": "1300",
+          "flight_id": "OLA_20240619_1300"
+        },
+        {
+          "time": "1500",
+          "flight_id": "OLA_20240619_1500"
+        }
+      ],
+      "20240721": [
+        {
+          "time": "1300",
+          "flight_id": "OLA_20240721_1300"
+        },
+        {
+          "time": "1500",
+          "flight_id": "OLA_20240721_1500"
+        }
+      ],
+      "20240723": [
+        {
+          "time": "1100",
+          "flight_id": "OLA_20240723_1100"
+        },
+        {
+          "time": "1300",
+          "flight_id": "OLA_20240723_1300"
+        },
+        {
+          "time": "1500",
+          "flight_id": "OLA_20240723_1500"
+        }
+      ]
+    },
+    "VAC": {
+      "20220713": [
+        {
+          "time": "1500",
+          "flight_id": "VAC_20220713_1500"
+        }
+      ],
+      "20220908": [
+        {
+          "time": "1100",
+          "flight_id": "VAC_20220908_1100"
+        },
+        {
+          "time": "1200",
+          "flight_id": "VAC_20220908_1200"
+        }
+      ],
+      "20230710": [
+        {
+          "time": "1230",
+          "flight_id": "VAC_20230710_1230"
+        },
+        {
+          "time": "1530",
+          "flight_id": "VAC_20230710_1530"
+        }
+      ],
+      "20230711": [
+        {
+          "time": "0730",
+          "flight_id": "VAC_20230711_0730"
+        },
+        {
+          "time": "1130",
+          "flight_id": "VAC_20230711_1130"
+        },
+        {
+          "time": "1630",
+          "flight_id": "VAC_20230711_1630"
+        }
+      ],
+      "20230713": [
+        {
+          "time": "1230",
+          "flight_id": "VAC_20230713_1230"
+        },
+        {
+          "time": "1630",
+          "flight_id": "VAC_20230713_1630"
+        }
+      ],
+      "20240616": [
+        {
+          "time": "0700",
+          "flight_id": "VAC_20240616_0700"
+        },
+        {
+          "time": "1100",
+          "flight_id": "VAC_20240616_1100"
+        },
+        {
+          "time": "1300",
+          "flight_id": "VAC_20240616_1300"
+        },
+        {
+          "time": "1500",
+          "flight_id": "VAC_20240616_1500"
+        }
+      ],
+      "20240725": [
+        {
+          "time": "1100",
+          "flight_id": "VAC_20240725_1100"
+        },
+        {
+          "time": "1500",
+          "flight_id": "VAC_20240725_1500"
+        }
+      ]
+    },
+    "WWF": {
+      "20220710": [
+        {
+          "time": "1100",
+          "flight_id": "WWF_20220710_1100"
+        },
+        {
+          "time": "1300",
+          "flight_id": "WWF_20220710_1300"
+        },
+        {
+          "time": "1500",
+          "flight_id": "WWF_20220710_1500"
+        }
+      ],
+      "20220714": [
+        {
+          "time": "1100",
+          "flight_id": "WWF_20220714_1100"
+        },
+        {
+          "time": "1300",
+          "flight_id": "WWF_20220714_1300"
+        },
+        {
+          "time": "1500",
+          "flight_id": "WWF_20220714_1500"
+        }
+      ],
+      "20220909": [
+        {
+          "time": "1100",
+          "flight_id": "WWF_20220909_1100"
+        },
+        {
+          "time": "1200",
+          "flight_id": "WWF_20220909_1200"
+        },
+        {
+          "time": "1500",
+          "flight_id": "WWF_20220909_1500"
+        }
+      ],
+      "20230607": [
+        {
+          "time": "1500",
+          "flight_id": "WWF_20230607_1500"
+        }
+      ],
+      "20230709": [
+        {
+          "time": "1100",
+          "flight_id": "WWF_20230709_1100"
+        },
+        {
+          "time": "1300",
+          "flight_id": "WWF_20230709_1300"
+        },
+        {
+          "time": "1600",
+          "flight_id": "WWF_20230709_1600"
+        }
+      ]
+    }
+  },
+  "flights": [
+    {
+      "flight_id": "OLA_20210729_1500",
+      "site": "OLA",
+      "date": "20210729",
+      "time": "1500",
+      "metadata": "data/flights/OLA_20210729_1500/metadata.json",
+      "histograms": "data/flights/OLA_20210729_1500/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20210805_1100",
+      "site": "OLA",
+      "date": "20210805",
+      "time": "1100",
+      "metadata": "data/flights/OLA_20210805_1100/metadata.json",
+      "histograms": "data/flights/OLA_20210805_1100/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20210805_1300",
+      "site": "OLA",
+      "date": "20210805",
+      "time": "1300",
+      "metadata": "data/flights/OLA_20210805_1300/metadata.json",
+      "histograms": "data/flights/OLA_20210805_1300/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20210805_1500",
+      "site": "OLA",
+      "date": "20210805",
+      "time": "1500",
+      "metadata": "data/flights/OLA_20210805_1500/metadata.json",
+      "histograms": "data/flights/OLA_20210805_1500/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20230609_1500",
+      "site": "OLA",
+      "date": "20230609",
+      "time": "1500",
+      "metadata": "data/flights/OLA_20230609_1500/metadata.json",
+      "histograms": "data/flights/OLA_20230609_1500/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20240619_1100",
+      "site": "OLA",
+      "date": "20240619",
+      "time": "1100",
+      "metadata": "data/flights/OLA_20240619_1100/metadata.json",
+      "histograms": "data/flights/OLA_20240619_1100/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20240619_1300",
+      "site": "OLA",
+      "date": "20240619",
+      "time": "1300",
+      "metadata": "data/flights/OLA_20240619_1300/metadata.json",
+      "histograms": "data/flights/OLA_20240619_1300/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20240619_1500",
+      "site": "OLA",
+      "date": "20240619",
+      "time": "1500",
+      "metadata": "data/flights/OLA_20240619_1500/metadata.json",
+      "histograms": "data/flights/OLA_20240619_1500/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20240721_1300",
+      "site": "OLA",
+      "date": "20240721",
+      "time": "1300",
+      "metadata": "data/flights/OLA_20240721_1300/metadata.json",
+      "histograms": "data/flights/OLA_20240721_1300/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20240721_1500",
+      "site": "OLA",
+      "date": "20240721",
+      "time": "1500",
+      "metadata": "data/flights/OLA_20240721_1500/metadata.json",
+      "histograms": "data/flights/OLA_20240721_1500/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20240723_1100",
+      "site": "OLA",
+      "date": "20240723",
+      "time": "1100",
+      "metadata": "data/flights/OLA_20240723_1100/metadata.json",
+      "histograms": "data/flights/OLA_20240723_1100/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20240723_1300",
+      "site": "OLA",
+      "date": "20240723",
+      "time": "1300",
+      "metadata": "data/flights/OLA_20240723_1300/metadata.json",
+      "histograms": "data/flights/OLA_20240723_1300/histograms.json"
+    },
+    {
+      "flight_id": "OLA_20240723_1500",
+      "site": "OLA",
+      "date": "20240723",
+      "time": "1500",
+      "metadata": "data/flights/OLA_20240723_1500/metadata.json",
+      "histograms": "data/flights/OLA_20240723_1500/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20220713_1500",
+      "site": "VAC",
+      "date": "20220713",
+      "time": "1500",
+      "metadata": "data/flights/VAC_20220713_1500/metadata.json",
+      "histograms": "data/flights/VAC_20220713_1500/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20220908_1100",
+      "site": "VAC",
+      "date": "20220908",
+      "time": "1100",
+      "metadata": "data/flights/VAC_20220908_1100/metadata.json",
+      "histograms": "data/flights/VAC_20220908_1100/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20220908_1200",
+      "site": "VAC",
+      "date": "20220908",
+      "time": "1200",
+      "metadata": "data/flights/VAC_20220908_1200/metadata.json",
+      "histograms": "data/flights/VAC_20220908_1200/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20230710_1230",
+      "site": "VAC",
+      "date": "20230710",
+      "time": "1230",
+      "metadata": "data/flights/VAC_20230710_1230/metadata.json",
+      "histograms": "data/flights/VAC_20230710_1230/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20230710_1530",
+      "site": "VAC",
+      "date": "20230710",
+      "time": "1530",
+      "metadata": "data/flights/VAC_20230710_1530/metadata.json",
+      "histograms": "data/flights/VAC_20230710_1530/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20230711_0730",
+      "site": "VAC",
+      "date": "20230711",
+      "time": "0730",
+      "metadata": "data/flights/VAC_20230711_0730/metadata.json",
+      "histograms": "data/flights/VAC_20230711_0730/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20230711_1130",
+      "site": "VAC",
+      "date": "20230711",
+      "time": "1130",
+      "metadata": "data/flights/VAC_20230711_1130/metadata.json",
+      "histograms": "data/flights/VAC_20230711_1130/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20230711_1630",
+      "site": "VAC",
+      "date": "20230711",
+      "time": "1630",
+      "metadata": "data/flights/VAC_20230711_1630/metadata.json",
+      "histograms": "data/flights/VAC_20230711_1630/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20230713_1230",
+      "site": "VAC",
+      "date": "20230713",
+      "time": "1230",
+      "metadata": "data/flights/VAC_20230713_1230/metadata.json",
+      "histograms": "data/flights/VAC_20230713_1230/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20230713_1630",
+      "site": "VAC",
+      "date": "20230713",
+      "time": "1630",
+      "metadata": "data/flights/VAC_20230713_1630/metadata.json",
+      "histograms": "data/flights/VAC_20230713_1630/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20240616_0700",
+      "site": "VAC",
+      "date": "20240616",
+      "time": "0700",
+      "metadata": "data/flights/VAC_20240616_0700/metadata.json",
+      "histograms": "data/flights/VAC_20240616_0700/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20240616_1100",
+      "site": "VAC",
+      "date": "20240616",
+      "time": "1100",
+      "metadata": "data/flights/VAC_20240616_1100/metadata.json",
+      "histograms": "data/flights/VAC_20240616_1100/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20240616_1300",
+      "site": "VAC",
+      "date": "20240616",
+      "time": "1300",
+      "metadata": "data/flights/VAC_20240616_1300/metadata.json",
+      "histograms": "data/flights/VAC_20240616_1300/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20240616_1500",
+      "site": "VAC",
+      "date": "20240616",
+      "time": "1500",
+      "metadata": "data/flights/VAC_20240616_1500/metadata.json",
+      "histograms": "data/flights/VAC_20240616_1500/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20240725_1100",
+      "site": "VAC",
+      "date": "20240725",
+      "time": "1100",
+      "metadata": "data/flights/VAC_20240725_1100/metadata.json",
+      "histograms": "data/flights/VAC_20240725_1100/histograms.json"
+    },
+    {
+      "flight_id": "VAC_20240725_1500",
+      "site": "VAC",
+      "date": "20240725",
+      "time": "1500",
+      "metadata": "data/flights/VAC_20240725_1500/metadata.json",
+      "histograms": "data/flights/VAC_20240725_1500/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20220710_1100",
+      "site": "WWF",
+      "date": "20220710",
+      "time": "1100",
+      "metadata": "data/flights/WWF_20220710_1100/metadata.json",
+      "histograms": "data/flights/WWF_20220710_1100/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20220710_1300",
+      "site": "WWF",
+      "date": "20220710",
+      "time": "1300",
+      "metadata": "data/flights/WWF_20220710_1300/metadata.json",
+      "histograms": "data/flights/WWF_20220710_1300/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20220710_1500",
+      "site": "WWF",
+      "date": "20220710",
+      "time": "1500",
+      "metadata": "data/flights/WWF_20220710_1500/metadata.json",
+      "histograms": "data/flights/WWF_20220710_1500/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20220714_1100",
+      "site": "WWF",
+      "date": "20220714",
+      "time": "1100",
+      "metadata": "data/flights/WWF_20220714_1100/metadata.json",
+      "histograms": "data/flights/WWF_20220714_1100/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20220714_1300",
+      "site": "WWF",
+      "date": "20220714",
+      "time": "1300",
+      "metadata": "data/flights/WWF_20220714_1300/metadata.json",
+      "histograms": "data/flights/WWF_20220714_1300/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20220714_1500",
+      "site": "WWF",
+      "date": "20220714",
+      "time": "1500",
+      "metadata": "data/flights/WWF_20220714_1500/metadata.json",
+      "histograms": "data/flights/WWF_20220714_1500/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20220909_1100",
+      "site": "WWF",
+      "date": "20220909",
+      "time": "1100",
+      "metadata": "data/flights/WWF_20220909_1100/metadata.json",
+      "histograms": "data/flights/WWF_20220909_1100/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20220909_1200",
+      "site": "WWF",
+      "date": "20220909",
+      "time": "1200",
+      "metadata": "data/flights/WWF_20220909_1200/metadata.json",
+      "histograms": "data/flights/WWF_20220909_1200/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20220909_1500",
+      "site": "WWF",
+      "date": "20220909",
+      "time": "1500",
+      "metadata": "data/flights/WWF_20220909_1500/metadata.json",
+      "histograms": "data/flights/WWF_20220909_1500/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20230607_1500",
+      "site": "WWF",
+      "date": "20230607",
+      "time": "1500",
+      "metadata": "data/flights/WWF_20230607_1500/metadata.json",
+      "histograms": "data/flights/WWF_20230607_1500/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20230709_1100",
+      "site": "WWF",
+      "date": "20230709",
+      "time": "1100",
+      "metadata": "data/flights/WWF_20230709_1100/metadata.json",
+      "histograms": "data/flights/WWF_20230709_1100/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20230709_1300",
+      "site": "WWF",
+      "date": "20230709",
+      "time": "1300",
+      "metadata": "data/flights/WWF_20230709_1300/metadata.json",
+      "histograms": "data/flights/WWF_20230709_1300/histograms.json"
+    },
+    {
+      "flight_id": "WWF_20230709_1600",
+      "site": "WWF",
+      "date": "20230709",
+      "time": "1600",
+      "metadata": "data/flights/WWF_20230709_1600/metadata.json",
+      "histograms": "data/flights/WWF_20230709_1600/histograms.json"
+    }
+  ]
+}
