@@ -1,0 +1,365 @@
+{
+  "flight_id": "VAC_20230713_1630",
+  "site": "VAC",
+  "date": "20230713",
+  "time": "1630",
+  "models": {
+    "PT": {
+      "source_file": "VAC_20230713_1630_PT.tif",
+      "source_path": "C:\\Users\\mdura\\OneDrive\\Desktop\\PHD_PAPER1_PROCESSING_v2\\2_tseb_loop\\outputs\\PT\\VAC_20230713_1630_PT.tif",
+      "variables": {
+        "Rn": {
+          "band": 1,
+          "units": "W m-2",
+          "display_min": 0.0,
+          "display_max": 850.0,
+          "colormap": "viridis",
+          "image": "data/rasters/VAC_20230713_1630_PT_Rn.png",
+          "qa_qc": {
+            "screen_min": -200.0,
+            "screen_max": 1200.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": 459.89209493439296,
+            "median": 468.06878662109375,
+            "std": 23.695517002210543,
+            "min": 300.4345397949219,
+            "max": 493.524658203125,
+            "p01": 354.49165405273436,
+            "p05": 417.12615356445315,
+            "p95": 479.1273162841797,
+            "p99": 482.2883978271484
+          }
+        },
+        "H": {
+          "band": 2,
+          "units": "W m-2",
+          "display_min": -500.0,
+          "display_max": 550.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/VAC_20230713_1630_PT_H.png",
+          "qa_qc": {
+            "screen_min": -700.0,
+            "screen_max": 1000.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": 9.195892578214568,
+            "median": -8.102035522460938,
+            "std": 56.50057182591394,
+            "min": -88.43991088867188,
+            "max": 406.27069091796875,
+            "p01": -45.433546752929686,
+            "p05": -34.749457931518556,
+            "p95": 131.4695007324218,
+            "p99": 243.02895690917958
+          }
+        },
+        "LE": {
+          "band": 3,
+          "units": "W m-2",
+          "display_min": -200.0,
+          "display_max": 1100.0,
+          "colormap": "turbo",
+          "image": "data/rasters/VAC_20230713_1630_PT_LE.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 1500.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": 403.47526951286574,
+            "median": 449.4622497558594,
+            "std": 104.55871863745979,
+            "min": 0.0,
+            "max": 492.9062194824219,
+            "p01": 0.0,
+            "p05": 179.6894302368164,
+            "p95": 477.8218719482422,
+            "p99": 482.13885803222655
+          }
+        },
+        "G": {
+          "band": 4,
+          "units": "W m-2",
+          "display_min": -100.0,
+          "display_max": 250.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/VAC_20230713_1630_PT_G.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 600.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": 47.2209328927975,
+            "median": 34.861289978027344,
+            "std": 32.775300025933255,
+            "min": 3.6872072219848633,
+            "max": 165.7485809326172,
+            "p01": 8.730105419158935,
+            "p05": 13.214105415344239,
+            "p95": 120.30192718505857,
+            "p99": 136.7233175659179
+          }
+        }
+      }
+    },
+    "PM": {
+      "source_file": "VAC_20230713_1630_PM.tif",
+      "source_path": "C:\\Users\\mdura\\OneDrive\\Desktop\\PHD_PAPER1_PROCESSING_v2\\2_tseb_loop\\outputs\\PM\\VAC_20230713_1630_PM.tif",
+      "variables": {
+        "Rn": {
+          "band": 1,
+          "units": "W m-2",
+          "display_min": 0.0,
+          "display_max": 850.0,
+          "colormap": "viridis",
+          "image": "data/rasters/VAC_20230713_1630_PM_Rn.png",
+          "qa_qc": {
+            "screen_min": -200.0,
+            "screen_max": 1200.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": 477.33778662752974,
+            "median": 482.6025085449219,
+            "std": 24.851629162374422,
+            "min": 300.4345397949219,
+            "max": 525.0775146484375,
+            "p01": 354.49165405273436,
+            "p05": 443.0702392578125,
+            "p95": 497.36195068359376,
+            "p99": 500.4882012939453
+          }
+        },
+        "H": {
+          "band": 2,
+          "units": "W m-2",
+          "display_min": -500.0,
+          "display_max": 550.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/VAC_20230713_1630_PM_H.png",
+          "qa_qc": {
+            "screen_min": -700.0,
+            "screen_max": 1000.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": -82.2735774006101,
+            "median": -102.06780242919922,
+            "std": 78.16844103824329,
+            "min": -250.3486328125,
+            "max": 394.4458312988281,
+            "p01": -169.22444549560547,
+            "p05": -151.0892578125,
+            "p95": 83.38263549804685,
+            "p99": 242.6577197265625
+          }
+        },
+        "LE": {
+          "band": 3,
+          "units": "W m-2",
+          "display_min": -200.0,
+          "display_max": 1100.0,
+          "colormap": "turbo",
+          "image": "data/rasters/VAC_20230713_1630_PM_LE.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 1500.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": 528.1415455455535,
+            "median": 557.9442749023438,
+            "std": 121.90619477805879,
+            "min": 0.0,
+            "max": 706.3284912109375,
+            "p01": 0.0,
+            "p05": 310.8664459228516,
+            "p95": 629.9222900390625,
+            "p99": 649.0400830078123
+          }
+        },
+        "G": {
+          "band": 4,
+          "units": "W m-2",
+          "display_min": -100.0,
+          "display_max": 250.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/VAC_20230713_1630_PM_G.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 600.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": 31.46981881534345,
+            "median": 16.82948112487793,
+            "std": 32.93297949710836,
+            "min": -3.31880259513855,
+            "max": 165.7485809326172,
+            "p01": 0.7521484351158144,
+            "p05": 3.104392409324646,
+            "p95": 100.27064285278318,
+            "p99": 134.58162200927717
+          }
+        }
+      }
+    },
+    "SW": {
+      "source_file": "VAC_20230713_1630_SW.tif",
+      "source_path": "C:\\Users\\mdura\\OneDrive\\Desktop\\PHD_PAPER1_PROCESSING_v2\\2_tseb_loop\\outputs\\SW\\VAC_20230713_1630_SW.tif",
+      "variables": {
+        "Rn": {
+          "band": 1,
+          "units": "W m-2",
+          "display_min": 0.0,
+          "display_max": 850.0,
+          "colormap": "viridis",
+          "image": "data/rasters/VAC_20230713_1630_SW_Rn.png",
+          "qa_qc": {
+            "screen_min": -200.0,
+            "screen_max": 1200.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": 471.3803892352587,
+            "median": 477.322998046875,
+            "std": 24.510909520546942,
+            "min": 300.4345397949219,
+            "max": 509.01470947265625,
+            "p01": 354.49165405273436,
+            "p05": 437.40374145507815,
+            "p95": 492.3651092529297,
+            "p99": 497.06773681640624
+          }
+        },
+        "H": {
+          "band": 2,
+          "units": "W m-2",
+          "display_min": -500.0,
+          "display_max": 550.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/VAC_20230713_1630_SW_H.png",
+          "qa_qc": {
+            "screen_min": -700.0,
+            "screen_max": 1000.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": -65.30643923819942,
+            "median": -83.43904113769531,
+            "std": 73.00914957113346,
+            "min": -183.20346069335938,
+            "max": 341.42645263671875,
+            "p01": -147.87849365234376,
+            "p05": -130.48248596191405,
+            "p95": 88.54003601074209,
+            "p99": 242.23464843749994
+          }
+        },
+        "LE": {
+          "band": 3,
+          "units": "W m-2",
+          "display_min": -200.0,
+          "display_max": 1100.0,
+          "colormap": "turbo",
+          "image": "data/rasters/VAC_20230713_1630_SW_LE.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 1500.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": 499.10743206693064,
+            "median": 530.9243774414062,
+            "std": 120.35006171418816,
+            "min": 0.0,
+            "max": 658.0106201171875,
+            "p01": 0.0,
+            "p05": 269.47742919921876,
+            "p95": 604.381982421875,
+            "p99": 621.8722814941406
+          }
+        },
+        "G": {
+          "band": 4,
+          "units": "W m-2",
+          "display_min": -100.0,
+          "display_max": 250.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/VAC_20230713_1630_SW_G.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 600.0,
+            "finite_pixels_before": 35999,
+            "valid_pixels_after": 35999,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 35999,
+            "mean": 37.57939659344785,
+            "median": 22.114971160888672,
+            "std": 33.76251493116353,
+            "min": 2.537187337875366,
+            "max": 165.7485809326172,
+            "p01": 5.349430513381958,
+            "p05": 6.714870500564575,
+            "p95": 113.74218978881831,
+            "p99": 134.70195434570311
+          }
+        }
+      }
+    }
+  },
+  "bounds": [
+    [
+      38.29210841135712,
+      -121.92446590674881
+    ],
+    [
+      38.30131496963678,
+      -121.90654773718292
+    ]
+  ],
+  "crs": "EPSG:6417",
+  "shape": [
+    157,
+    241
+  ]
+}

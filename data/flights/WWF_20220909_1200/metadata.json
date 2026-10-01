@@ -1,0 +1,365 @@
+{
+  "flight_id": "WWF_20220909_1200",
+  "site": "WWF",
+  "date": "20220909",
+  "time": "1200",
+  "models": {
+    "PT": {
+      "source_file": "WWF_20220909_1200_PT.tif",
+      "source_path": "C:\\Users\\mdura\\OneDrive\\Desktop\\PHD_PAPER1_PROCESSING_v2\\2_tseb_loop\\outputs\\PT\\WWF_20220909_1200_PT.tif",
+      "variables": {
+        "Rn": {
+          "band": 1,
+          "units": "W m-2",
+          "display_min": 0.0,
+          "display_max": 850.0,
+          "colormap": "viridis",
+          "image": "data/rasters/WWF_20220909_1200_PT_Rn.png",
+          "qa_qc": {
+            "screen_min": -200.0,
+            "screen_max": 1200.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": 420.1812591740275,
+            "median": 421.3824920654297,
+            "std": 12.833433212046225,
+            "min": 283.0602111816406,
+            "max": 449.8230285644531,
+            "p01": 365.0855920410156,
+            "p05": 406.0882308959961,
+            "p95": 434.3697036743164,
+            "p99": 440.7915139770508
+          }
+        },
+        "H": {
+          "band": 2,
+          "units": "W m-2",
+          "display_min": -500.0,
+          "display_max": 550.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/WWF_20220909_1200_PT_H.png",
+          "qa_qc": {
+            "screen_min": -700.0,
+            "screen_max": 1000.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": 14.384387856786894,
+            "median": 8.072977542877197,
+            "std": 33.5927577062308,
+            "min": -36.870582580566406,
+            "max": 293.5442810058594,
+            "p01": -24.396860218048094,
+            "p05": -17.923375797271728,
+            "p95": 63.52497444152827,
+            "p99": 199.84499694824217
+          }
+        },
+        "LE": {
+          "band": 3,
+          "units": "W m-2",
+          "display_min": -200.0,
+          "display_max": 1100.0,
+          "colormap": "turbo",
+          "image": "data/rasters/WWF_20220909_1200_PT_LE.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 1500.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": 348.828108529961,
+            "median": 356.2209777832031,
+            "std": 51.403843658279996,
+            "min": 0.0,
+            "max": 428.6904296875,
+            "p01": 59.39740295410158,
+            "p05": 284.5802764892578,
+            "p95": 402.93766632080076,
+            "p99": 421.9111526489258
+          }
+        },
+        "G": {
+          "band": 4,
+          "units": "W m-2",
+          "display_min": -100.0,
+          "display_max": 250.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/WWF_20220909_1200_PT_G.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 600.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": 56.968762319526434,
+            "median": 56.64990997314453,
+            "std": 10.38745490834168,
+            "min": 24.273447036743164,
+            "max": 134.85716247558594,
+            "p01": 33.92629550933838,
+            "p05": 42.15386199951172,
+            "p95": 70.82864456176758,
+            "p99": 101.72492897033679
+          }
+        }
+      }
+    },
+    "PM": {
+      "source_file": "WWF_20220909_1200_PM.tif",
+      "source_path": "C:\\Users\\mdura\\OneDrive\\Desktop\\PHD_PAPER1_PROCESSING_v2\\2_tseb_loop\\outputs\\PM\\WWF_20220909_1200_PM.tif",
+      "variables": {
+        "Rn": {
+          "band": 1,
+          "units": "W m-2",
+          "display_min": 0.0,
+          "display_max": 850.0,
+          "colormap": "viridis",
+          "image": "data/rasters/WWF_20220909_1200_PM_Rn.png",
+          "qa_qc": {
+            "screen_min": -200.0,
+            "screen_max": 1200.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": 432.2581385936142,
+            "median": 434.52447509765625,
+            "std": 15.157511525006514,
+            "min": 283.0602111816406,
+            "max": 463.08831787109375,
+            "p01": 361.2432702636719,
+            "p05": 412.7911972045898,
+            "p95": 447.5008316040039,
+            "p99": 453.36409942626955
+          }
+        },
+        "H": {
+          "band": 2,
+          "units": "W m-2",
+          "display_min": -500.0,
+          "display_max": 550.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/WWF_20220909_1200_PM_H.png",
+          "qa_qc": {
+            "screen_min": -700.0,
+            "screen_max": 1000.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": -43.99905046403527,
+            "median": -53.99081230163574,
+            "std": 45.789775995830794,
+            "min": -133.3973388671875,
+            "max": 282.7225036621094,
+            "p01": -97.28512016296386,
+            "p05": -87.80044784545899,
+            "p95": 32.26876773834228,
+            "p99": 198.30349182128904
+          }
+        },
+        "LE": {
+          "band": 3,
+          "units": "W m-2",
+          "display_min": -200.0,
+          "display_max": 1100.0,
+          "colormap": "turbo",
+          "image": "data/rasters/WWF_20220909_1200_PM_LE.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 1500.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": 437.18474479328927,
+            "median": 452.0258026123047,
+            "std": 67.88371895154442,
+            "min": 0.0,
+            "max": 579.611328125,
+            "p01": 63.797837257385254,
+            "p05": 334.25462951660154,
+            "p95": 499.9444808959961,
+            "p99": 521.1311145019531
+          }
+        },
+        "G": {
+          "band": 4,
+          "units": "W m-2",
+          "display_min": -100.0,
+          "display_max": 250.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/WWF_20220909_1200_PM_G.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 600.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": 39.072444188501414,
+            "median": 38.94748878479004,
+            "std": 11.594265684964505,
+            "min": -35.121768951416016,
+            "max": 134.85716247558594,
+            "p01": 16.731729049682617,
+            "p05": 23.341698837280273,
+            "p95": 52.219907188415526,
+            "p99": 96.20688568115112
+          }
+        }
+      }
+    },
+    "SW": {
+      "source_file": "WWF_20220909_1200_SW.tif",
+      "source_path": "C:\\Users\\mdura\\OneDrive\\Desktop\\PHD_PAPER1_PROCESSING_v2\\2_tseb_loop\\outputs\\SW\\WWF_20220909_1200_SW.tif",
+      "variables": {
+        "Rn": {
+          "band": 1,
+          "units": "W m-2",
+          "display_min": 0.0,
+          "display_max": 850.0,
+          "colormap": "viridis",
+          "image": "data/rasters/WWF_20220909_1200_SW_Rn.png",
+          "qa_qc": {
+            "screen_min": -200.0,
+            "screen_max": 1200.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": 432.17600974268873,
+            "median": 434.4078674316406,
+            "std": 14.838214535445873,
+            "min": 283.0602111816406,
+            "max": 462.95391845703125,
+            "p01": 366.24963195800785,
+            "p05": 413.0615264892578,
+            "p95": 447.0861068725586,
+            "p99": 452.9140216064453
+          }
+        },
+        "H": {
+          "band": 2,
+          "units": "W m-2",
+          "display_min": -500.0,
+          "display_max": 550.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/WWF_20220909_1200_SW_H.png",
+          "qa_qc": {
+            "screen_min": -700.0,
+            "screen_max": 1000.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": -50.50559066022884,
+            "median": -63.58167266845703,
+            "std": 47.818139260107536,
+            "min": -134.47891235351562,
+            "max": 239.82080078125,
+            "p01": -103.05368751525879,
+            "p05": -94.14365196228027,
+            "p95": 33.3554878234863,
+            "p99": 198.73113433837887
+          }
+        },
+        "LE": {
+          "band": 3,
+          "units": "W m-2",
+          "display_min": -200.0,
+          "display_max": 1100.0,
+          "colormap": "turbo",
+          "image": "data/rasters/WWF_20220909_1200_SW_LE.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 1500.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": 439.57235945239927,
+            "median": 454.9557800292969,
+            "std": 68.64900974600019,
+            "min": 0.0,
+            "max": 578.8479614257812,
+            "p01": 71.28233169555664,
+            "p05": 330.5712524414063,
+            "p95": 503.38680572509764,
+            "p99": 523.3484344482422
+          }
+        },
+        "G": {
+          "band": 4,
+          "units": "W m-2",
+          "display_min": -100.0,
+          "display_max": 250.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/WWF_20220909_1200_SW_G.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 600.0,
+            "finite_pixels_before": 13018,
+            "valid_pixels_after": 13018,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 13018,
+            "mean": 43.109240402547535,
+            "median": 42.583539962768555,
+            "std": 11.329689002885694,
+            "min": 13.566997528076172,
+            "max": 134.85716247558594,
+            "p01": 19.59446590423584,
+            "p05": 27.96307592391968,
+            "p95": 57.11915187835693,
+            "p99": 97.69403678893984
+          }
+        }
+      }
+    }
+  },
+  "bounds": [
+    [
+      38.664315371402616,
+      -121.89494490126542
+    ],
+    [
+      38.6713507722418,
+      -121.88589645048718
+    ]
+  ],
+  "crs": "EPSG:6417",
+  "shape": [
+    120,
+    121
+  ]
+}

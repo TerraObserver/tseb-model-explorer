@@ -1,0 +1,365 @@
+{
+  "flight_id": "OLA_20240723_1300",
+  "site": "OLA",
+  "date": "20240723",
+  "time": "1300",
+  "models": {
+    "PT": {
+      "source_file": "OLA_20240723_1300_PT.tif",
+      "source_path": "C:\\Users\\mdura\\OneDrive\\Desktop\\PHD_PAPER1_PROCESSING_v2\\2_tseb_loop\\outputs\\PT\\OLA_20240723_1300_PT.tif",
+      "variables": {
+        "Rn": {
+          "band": 1,
+          "units": "W m-2",
+          "display_min": 0.0,
+          "display_max": 850.0,
+          "colormap": "viridis",
+          "image": "data/rasters/OLA_20240723_1300_PT_Rn.png",
+          "qa_qc": {
+            "screen_min": -200.0,
+            "screen_max": 1200.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 646.4834255834669,
+            "median": 678.83447265625,
+            "std": 62.86392001301836,
+            "min": 403.7635803222656,
+            "max": 708.2119750976562,
+            "p01": 439.14177856445315,
+            "p05": 511.10321044921875,
+            "p95": 698.4345458984375,
+            "p99": 701.7951171875
+          }
+        },
+        "H": {
+          "band": 2,
+          "units": "W m-2",
+          "display_min": -500.0,
+          "display_max": 550.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/OLA_20240723_1300_PT_H.png",
+          "qa_qc": {
+            "screen_min": -700.0,
+            "screen_max": 1000.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 111.1205704691412,
+            "median": 8.466268539428711,
+            "std": 173.5497798340547,
+            "min": -47.49302291870117,
+            "max": 554.4141235351562,
+            "p01": -39.78947875976562,
+            "p05": -35.60040054321289,
+            "p95": 447.63240356445306,
+            "p99": 478.6558520507812
+          }
+        },
+        "LE": {
+          "band": 3,
+          "units": "W m-2",
+          "display_min": -200.0,
+          "display_max": 1100.0,
+          "colormap": "turbo",
+          "image": "data/rasters/OLA_20240723_1300_PT_LE.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 1500.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 463.0535293322124,
+            "median": 625.8671264648438,
+            "std": 250.3795732910627,
+            "min": 0.0,
+            "max": 690.3740234375,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p95": 670.1480590820313,
+            "p99": 676.1093823242187
+          }
+        },
+        "G": {
+          "band": 4,
+          "units": "W m-2",
+          "display_min": -100.0,
+          "display_max": 250.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/OLA_20240723_1300_PT_G.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 600.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 72.30932608284418,
+            "median": 67.373291015625,
+            "std": 31.779262492536134,
+            "min": 8.739513397216797,
+            "max": 208.6781463623047,
+            "p01": 27.695406799316405,
+            "p05": 33.74493637084961,
+            "p95": 149.58721618652342,
+            "p99": 168.47998291015625
+          }
+        }
+      }
+    },
+    "PM": {
+      "source_file": "OLA_20240723_1300_PM.tif",
+      "source_path": "C:\\Users\\mdura\\OneDrive\\Desktop\\PHD_PAPER1_PROCESSING_v2\\2_tseb_loop\\outputs\\PM\\OLA_20240723_1300_PM.tif",
+      "variables": {
+        "Rn": {
+          "band": 1,
+          "units": "W m-2",
+          "display_min": 0.0,
+          "display_max": 850.0,
+          "colormap": "viridis",
+          "image": "data/rasters/OLA_20240723_1300_PM_Rn.png",
+          "qa_qc": {
+            "screen_min": -200.0,
+            "screen_max": 1200.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 634.6317774951077,
+            "median": 674.1596069335938,
+            "std": 79.26131053884517,
+            "min": 208.7852783203125,
+            "max": 719.9979248046875,
+            "p01": 419.13046997070313,
+            "p05": 470.4734802246094,
+            "p95": 705.3178588867188,
+            "p99": 710.7088623046875
+          }
+        },
+        "H": {
+          "band": 2,
+          "units": "W m-2",
+          "display_min": -500.0,
+          "display_max": 550.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/OLA_20240723_1300_PM_H.png",
+          "qa_qc": {
+            "screen_min": -700.0,
+            "screen_max": 1000.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 58.668525355827285,
+            "median": 14.719840049743652,
+            "std": 142.22651981334892,
+            "min": -143.8057861328125,
+            "max": 540.1802978515625,
+            "p01": -92.7559619140625,
+            "p05": -72.76750183105469,
+            "p95": 423.50428466796876,
+            "p99": 466.5546923828125
+          }
+        },
+        "LE": {
+          "band": 3,
+          "units": "W m-2",
+          "display_min": -200.0,
+          "display_max": 1100.0,
+          "colormap": "turbo",
+          "image": "data/rasters/OLA_20240723_1300_PM_LE.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 1500.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 578.8648672038859,
+            "median": 681.0877685546875,
+            "std": 245.3284242965677,
+            "min": 0.0,
+            "max": 857.1238403320312,
+            "p01": 0.0,
+            "p05": 13.413663864135742,
+            "p95": 800.4298583984375,
+            "p99": 823.1890478515625
+          }
+        },
+        "G": {
+          "band": 4,
+          "units": "W m-2",
+          "display_min": -100.0,
+          "display_max": 250.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/OLA_20240723_1300_PM_G.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 600.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": -2.901614903101699,
+            "median": -22.703815460205078,
+            "std": 57.69590301762357,
+            "min": -74.67436981201172,
+            "max": 208.6781463623047,
+            "p01": -68.06056640625,
+            "p05": -62.28039779663086,
+            "p95": 147.96030883789052,
+            "p99": 168.33874389648437
+          }
+        }
+      }
+    },
+    "SW": {
+      "source_file": "OLA_20240723_1300_SW.tif",
+      "source_path": "C:\\Users\\mdura\\OneDrive\\Desktop\\PHD_PAPER1_PROCESSING_v2\\2_tseb_loop\\outputs\\SW\\OLA_20240723_1300_SW.tif",
+      "variables": {
+        "Rn": {
+          "band": 1,
+          "units": "W m-2",
+          "display_min": 0.0,
+          "display_max": 850.0,
+          "colormap": "viridis",
+          "image": "data/rasters/OLA_20240723_1300_SW_Rn.png",
+          "qa_qc": {
+            "screen_min": -200.0,
+            "screen_max": 1200.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 649.6713414930058,
+            "median": 681.5437622070312,
+            "std": 63.9535957552533,
+            "min": 403.7635803222656,
+            "max": 719.8350830078125,
+            "p01": 439.14177856445315,
+            "p05": 520.305419921875,
+            "p95": 706.1216064453125,
+            "p99": 711.1509936523438
+          }
+        },
+        "H": {
+          "band": 2,
+          "units": "W m-2",
+          "display_min": -500.0,
+          "display_max": 550.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/OLA_20240723_1300_SW_H.png",
+          "qa_qc": {
+            "screen_min": -700.0,
+            "screen_max": 1000.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 93.6634270328265,
+            "median": -5.393928527832031,
+            "std": 168.67218589379402,
+            "min": -286.34649658203125,
+            "max": 454.5602111816406,
+            "p01": -101.44728302001953,
+            "p05": -82.64949645996094,
+            "p95": 393.9562072753906,
+            "p99": 404.3847033691406
+          }
+        },
+        "LE": {
+          "band": 3,
+          "units": "W m-2",
+          "display_min": -200.0,
+          "display_max": 1100.0,
+          "colormap": "turbo",
+          "image": "data/rasters/OLA_20240723_1300_SW_LE.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 1500.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 508.11326810034376,
+            "median": 652.6096801757812,
+            "std": 265.3734070302258,
+            "min": 0.0,
+            "max": 938.1759643554688,
+            "p01": 0.0,
+            "p05": 43.01824798583994,
+            "p95": 769.6428955078125,
+            "p99": 795.9168359375
+          }
+        },
+        "G": {
+          "band": 4,
+          "units": "W m-2",
+          "display_min": -100.0,
+          "display_max": 250.0,
+          "colormap": "coolwarm",
+          "image": "data/rasters/OLA_20240723_1300_SW_G.png",
+          "qa_qc": {
+            "screen_min": -300.0,
+            "screen_max": 600.0,
+            "finite_pixels_before": 17985,
+            "valid_pixels_after": 17985,
+            "range_rejected_pixels": 0
+          },
+          "stats": {
+            "count": 17985,
+            "mean": 47.89464680619397,
+            "median": 32.593597412109375,
+            "std": 44.694275312839224,
+            "min": -47.59480285644531,
+            "max": 208.6781463623047,
+            "p01": -27.843501052856446,
+            "p05": -11.272459983825682,
+            "p95": 148.47833862304685,
+            "p99": 168.40183593749998
+          }
+        }
+      }
+    }
+  },
+  "bounds": [
+    [
+      36.7965620183262,
+      -120.2125956652122
+    ],
+    [
+      36.80741572188734,
+      -120.20512502823495
+    ]
+  ],
+  "crs": "EPSG:6419",
+  "shape": [
+    185,
+    102
+  ]
+}
